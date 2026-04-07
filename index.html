@@ -597,10 +597,9 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
           <div class="floor-wall floor-wall-3d" style="left:57%;top:38%;width:16%;height:10%" data-label="현관"></div>
         </div>
       </div>
-      <!-- 도면 이미지 플레이스홀더 -->
-      <div class="img-placeholder" style="aspect-ratio:4/3;margin-top:16px">
-        <span class="ph-icon">📐</span>
-        <span id="floorplanLabel">59A형 도면 이미지</span>
+      <!-- 도면 이미지 -->
+      <div class="img-placeholder" style="aspect-ratio:4/3;margin-top:16px;background:#fff">
+        <img id="floorplanImg" src="img-floor-59a.jpg" alt="59A형 도면" style="width:100%;height:100%;object-fit:contain"/>
       </div>
     </div>
     <!-- Specs -->
@@ -898,7 +897,10 @@ function switchUnit(type, btn) {
   document.getElementById('s-units').textContent = d.units;
   document.getElementById('s-layout').textContent = d.layout;
   document.getElementById('s-rent').textContent = d.rent;
-  document.getElementById('floorplanLabel').textContent = type === '84' ? '84㎡형 도면 이미지' : `59${type.replace('59','')}형 도면 이미지`;
+  const floorImgMap = { '59A': 'img-floor-59a.jpg', '59B': 'img-floor-59b.jpg', '84': 'img-floor-84.jpg' };
+  const floorImg = document.getElementById('floorplanImg');
+  floorImg.src = floorImgMap[type];
+  floorImg.alt = type === '84' ? '84㎡형 도면' : `${type}형 도면`;
   // Update 3D floorplan
   const fp = document.getElementById('floorplan3D');
   fp.querySelectorAll('.floor-wall').forEach(w => w.remove());
