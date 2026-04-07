@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>문산역 벽산블루밍 파르페온 — 공식 분양 안내</title>
+<meta name="description" content="문산역 도보 10초, 초역세권 40층 랜드마크. 벽산블루밍 파르페온 공식 분양 안내 페이지입니다."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════
+   DESIGN TOKENS — Sky-Blue Glass
+═══════════════════════════════════ */
+:root {
+  --c-sky-50:  #f0f8ff;
+  --c-sky-100: #dbeeff;
+  --c-sky-200: #b8d9ff;
+  --c-sky-300: #7dbcff;
+  --c-sky-400: #3d9af5;
+  --c-sky-500: #1a7ae8;
+  --c-sky-600: #0f5dca;
+  --c-sky-700: #0d48a8;
+  --c-navy:    #0a2558;
+  --c-white:   #ffffff;
+  --c-accent:  #e84040;
+  --c-gold:    #e8a020;
+  --glass-bg:     rgba(255,255,255,.64);
+  --glass-border: rgba(255,255,255,.9);
+  --glass-shadow: 0 8px 32px rgba(26,122,232,.13);
+  --r-sm: 14px; --r-md: 20px; --r-lg: 28px; --r-xl: 36px; --r-pill: 100px;
+  --font: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ease-spring: cubic-bezier(.22,1,.36,1);
+  --ease-smooth: cubic-bezier(.4,0,.2,1);
+  --bottom-bar-h: 64px;
+}
+
+/* ═══ BASE ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;scroll-padding-top:70px}
+body{font-family:var(--font);background:#f3f8ff;color:var(--c-navy);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:var(--bottom-bar-h)}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:pointer;font-family:var(--font)}
+
+/* Global BG */
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 65% 50% at 10% 15%,rgba(61,154,245,.2) 0%,transparent 55%),radial-gradient(ellipse 55% 45% at 90% 85%,rgba(26,122,232,.14) 0%,transparent 55%),linear-gradient(160deg,#e6f1fd 0%,#f3f8ff 50%,#e0eeff 100%);z-index:-1;pointer-events:none}
+
+/* Glass helpers */
+.glass-card{background:rgba(255,255,255,.72);backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);border:1.5px solid rgba(255,255,255,.92);box-shadow:0 4px 24px rgba(26,122,232,.1),inset 0 1px 0 rgba(255,255,255,.98)}
+
+/* ═══ HEADER ═══ */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .3s var(--ease-smooth)}
+.site-header.scrolled{background:rgba(240,248,255,.92);backdrop-filter:blur(24px) saturate(200%);-webkit-backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid rgba(255,255,255,.7);box-shadow:0 4px 24px rgba(26,122,232,.1)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:14px 20px;transition:padding .3s}
+.site-header.scrolled .header-inner{padding-top:10px;padding-bottom:10px}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-badge{width:36px;height:36px;background:linear-gradient(135deg,var(--c-sky-400),var(--c-sky-700));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 12px rgba(26,122,232,.3);flex-shrink:0}
+.logo-text{font-size:12px;font-weight:800;color:var(--c-navy);line-height:1.3}
+.logo-text span{display:block;font-weight:500;font-size:10px;color:var(--c-sky-500);letter-spacing:.5px}
+
+/* Hamburger */
+.hamburger{width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;z-index:1100;position:relative}
+.hamburger span{display:block;width:22px;height:2px;background:var(--c-navy);border-radius:2px;transition:all .3s var(--ease-spring)}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Slide Menu */
+.nav-overlay{position:fixed;inset:0;background:rgba(10,37,88,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1050;opacity:0;pointer-events:none;transition:opacity .3s}
+.nav-overlay.open{opacity:1;pointer-events:all}
+.slide-nav{position:fixed;top:0;right:-300px;width:280px;height:100%;background:rgba(255,255,255,.96);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);z-index:1060;transition:right .35s var(--ease-spring);padding:80px 32px 40px;display:flex;flex-direction:column;gap:0;box-shadow:-8px 0 40px rgba(10,37,88,.2)}
+.slide-nav.open{right:0}
+.slide-nav a{display:flex;align-items:center;gap:12px;padding:16px 0;font-size:16px;font-weight:700;color:var(--c-navy);border-bottom:1px solid rgba(26,122,232,.08);transition:all .2s}
+.slide-nav a:hover,.slide-nav a:active{color:var(--c-sky-500);padding-left:8px}
+.slide-nav a .nav-icon{font-size:20px}
+.nav-tel-box{margin-top:auto;background:linear-gradient(135deg,var(--c-sky-500),var(--c-sky-700));border-radius:var(--r-lg);padding:20px;text-align:center}
+.nav-tel-box .nav-tel-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:8px}
+.nav-tel-box a{display:block;font-size:20px;font-weight:900;color:#fff;margin-bottom:4px;border:none;padding:4px 0}
+.nav-tel-box a:hover{padding-left:0}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:100px 20px 80px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg-main{position:absolute;inset:0;background:linear-gradient(150deg,#0d2d6e 0%,#1450a3 30%,#1a7ae8 60%,#3d9af5 80%,#7dbcff 100%)}
+.hero-skyline{position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,rgba(10,37,88,.9) 0%,transparent 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-light{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(125,188,255,.25) 0%,transparent 65%);pointer-events:none}
+.hero-particle{position:absolute;border-radius:50%;background:rgba(125,188,255,.4);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);opacity:.4}50%{transform:translateY(-20px) scale(1.1);opacity:.7}}
+
+.hero-content{position:relative;z-index:10;text-align:center;max-width:860px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.3);border-radius:var(--r-pill);padding:7px 16px;font-size:11px;font-weight:700;color:rgba(255,255,255,.95);letter-spacing:.6px;margin-bottom:24px;animation:slideDown .8s var(--ease-spring) both}
+.hero-eyebrow-dot{width:6px;height:6px;background:#7dbcff;border-radius:50%;box-shadow:0 0 8px #7dbcff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.7}}
+
+.hero-title{font-size:clamp(28px,7vw,72px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1.5px;margin-bottom:8px;animation:slideUp .9s var(--ease-spring) .1s both}
+.hero-title .sub-title{display:block;font-size:clamp(13px,3vw,28px);font-weight:500;color:rgba(255,255,255,.7);letter-spacing:3px;margin-bottom:12px}
+.hero-title .main-title{display:block;background:linear-gradient(135deg,#fff 30%,#7dbcff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title .brand-sub{display:block;font-size:clamp(10px,2vw,18px);font-weight:500;color:rgba(255,255,255,.55);letter-spacing:1px;margin-top:10px;-webkit-text-fill-color:rgba(255,255,255,.55)}
+
+.hero-chips{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:24px 0 32px;animation:slideUp .9s var(--ease-spring) .2s both}
+.hero-chip{background:rgba(255,255,255,.14);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.28);border-radius:var(--r-pill);padding:6px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.95)}
+
+.hero-cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:slideUp .9s var(--ease-spring) .3s both}
+.cta-primary{display:flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#fff 0%,#dbeeff 100%);color:var(--c-sky-700);font-size:14px;font-weight:900;border-radius:var(--r-pill);box-shadow:0 8px 32px rgba(255,255,255,.3);transition:all .28s var(--ease-spring)}
+.cta-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 48px rgba(255,255,255,.4)}
+.cta-secondary{display:flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(255,255,255,.14);backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.4);color:rgba(255,255,255,.95);font-size:14px;font-weight:700;border-radius:var(--r-pill);transition:all .28s var(--ease-spring)}
+.cta-secondary:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
+
+.hero-stats{display:flex;gap:0;justify-content:center;margin-top:40px;animation:slideUp .9s var(--ease-spring) .4s both}
+.hero-stat{flex:1;max-width:120px;text-align:center;padding:16px 6px;border-right:1px solid rgba(255,255,255,.15)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-val{font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px}
+.hero-stat-val em{font-style:normal;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:0;margin-left:1px}
+.hero-stat-label{font-size:9px;font-weight:600;color:rgba(255,255,255,.5);margin-top:4px}
+
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:10;animation:bounce 2s ease-in-out infinite}
+.scroll-hint span{font-size:9px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:1.5px;text-transform:uppercase}
+.scroll-arrow{width:18px;height:18px;border-bottom:2px solid rgba(255,255,255,.4);border-right:2px solid rgba(255,255,255,.4);transform:rotate(45deg)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ═══ SECTION BASE ═══ */
+.section{padding:72px 20px;max-width:1200px;margin:0 auto}
+.section-full{padding:72px 0;overflow:hidden}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:800;color:var(--c-sky-500);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.sec-label::before{content:'';width:20px;height:2px;background:var(--c-sky-400);border-radius:2px}
+.sec-title{font-size:clamp(24px,5vw,44px);font-weight:900;line-height:1.15;letter-spacing:-1.5px;color:var(--c-navy);margin-bottom:14px}
+.sec-title .accent{color:var(--c-sky-500)}
+.sec-desc{font-size:14px;color:#5a7aaa;line-height:1.75;max-width:560px}
+
+/* ═══ IMAGE PLACEHOLDER ═══ */
+.img-placeholder{width:100%;aspect-ratio:16/9;background:rgba(26,122,232,.06);border:2px dashed rgba(26,122,232,.2);border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(26,122,232,.35);font-size:13px;font-weight:700;overflow:hidden;position:relative}
+.img-placeholder .ph-icon{font-size:32px;opacity:.5}
+.img-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+/* ═══ GALLERY ═══ */
+.gallery-scroll{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px 0 12px;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-item{flex:0 0 80%;scroll-snap-align:start;border-radius:var(--r-lg);overflow:hidden}
+.gallery-item .img-placeholder{aspect-ratio:4/3}
+
+/* ═══ PREMIUM ═══ */
+.premium-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:32px}
+.premium-card{border-radius:var(--r-lg);padding:24px 20px;position:relative;overflow:hidden;transition:transform .32s var(--ease-spring),box-shadow .32s}
+.premium-card .card-num{position:absolute;top:12px;right:16px;font-size:56px;font-weight:900;color:rgba(26,122,232,.06);line-height:1;letter-spacing:-4px;user-select:none}
+.premium-card .card-icon{font-size:28px;margin-bottom:12px;display:block}
+.premium-card .card-title{font-size:16px;font-weight:800;color:var(--c-navy);margin-bottom:8px;letter-spacing:-.3px}
+.premium-card .card-badge{display:inline-block;font-size:9px;font-weight:800;color:var(--c-sky-500);background:rgba(26,122,232,.1);border:1px solid rgba(26,122,232,.2);border-radius:var(--r-pill);padding:3px 10px;letter-spacing:.4px;margin-bottom:10px}
+.premium-card .card-body{font-size:13px;color:#5a7aaa;line-height:1.7}
+.premium-card.featured{background:linear-gradient(145deg,var(--c-sky-600),var(--c-navy));border:2px solid rgba(125,188,255,.3);box-shadow:0 8px 40px rgba(26,122,232,.35)}
+.premium-card.featured .card-title{color:#fff}
+.premium-card.featured .card-body{color:rgba(255,255,255,.75)}
+.premium-card.featured .card-badge{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.9)}
+.premium-card.featured .card-num{color:rgba(255,255,255,.06)}
+
+/* ═══ TRANSPORT ═══ */
+.transport-wrap{background:linear-gradient(135deg,var(--c-navy) 0%,#1450a3 50%,var(--c-sky-500) 100%);position:relative;overflow:hidden}
+.transport-wrap::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
+.transport-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px 20px}
+.transport-inner .sec-label{color:#7dbcff}
+.transport-inner .sec-label::before{background:#7dbcff}
+.transport-inner .sec-title{color:#fff}
+.transport-inner .sec-desc{color:rgba(255,255,255,.7)}
+
+.transport-routes{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.route-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-md);padding:14px 16px;transition:all .25s}
+.route-badge{min-width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(255,255,255,.15);flex-shrink:0}
+.route-info{flex:1;min-width:0}
+.route-name{font-size:13px;font-weight:800;color:#fff;margin-bottom:2px}
+.route-time{font-size:11px;color:rgba(255,255,255,.6)}
+.route-status{font-size:10px;font-weight:800;padding:4px 10px;border-radius:var(--r-pill);flex-shrink:0;white-space:nowrap}
+.route-status.open{background:rgba(34,197,94,.2);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+.route-status.plan{background:rgba(251,146,60,.2);color:#fb923c;border:1px solid rgba(251,146,60,.3)}
+
+.transport-map-mock{border-radius:var(--r-xl);overflow:hidden;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.2);box-shadow:0 24px 64px rgba(0,0,0,.3);padding:20px;min-height:280px;display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:24px}
+.map-svg-wrap{width:100%}
+.map-line{stroke-dasharray:500;stroke-dashoffset:500;animation:drawLine 2s var(--ease-smooth) .5s forwards}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+.map-station{opacity:0;animation:fadeIn .4s var(--ease-spring) forwards}
+.map-our{animation:popIn .6s var(--ease-spring) 2s both}
+@keyframes popIn{0%{transform:scale(0);opacity:0}70%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+
+/* ═══ UNITS — 3D Floor Plan ═══ */
+.unit-tabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,.6);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.9);border-radius:var(--r-pill);padding:4px;display:inline-flex;box-shadow:0 2px 12px rgba(26,122,232,.08);flex-wrap:wrap}
+.unit-tab{padding:8px 16px;border-radius:var(--r-pill);font-size:12px;font-weight:700;color:#7090b8;transition:all .25s var(--ease-spring);cursor:pointer;white-space:nowrap}
+.unit-tab.active{background:linear-gradient(135deg,var(--c-sky-500),var(--c-sky-700));color:#fff;box-shadow:0 4px 16px rgba(26,122,232,.3)}
+
+.unit-display{display:grid;grid-template-columns:1fr;gap:24px}
+.unit-3d-wrap{perspective:800px;display:flex;align-items:center;justify-content:center;min-height:320px}
+.unit-3d{transform:rotateX(25deg) rotateZ(-10deg);transform-style:preserve-3d;transition:transform .5s var(--ease-spring);position:relative;width:280px;height:260px}
+.unit-3d:hover{transform:rotateX(20deg) rotateZ(-5deg)}
+.floor-base{position:absolute;bottom:0;left:0;right:0;height:100%;background:rgba(26,122,232,.06);border:2px solid rgba(26,122,232,.25);border-radius:8px;transform:translateZ(0px)}
+.floor-wall{position:absolute;background:rgba(26,122,232,.12);border:1.5px solid rgba(26,122,232,.3);border-radius:4px;transform-style:preserve-3d;transition:all .3s}
+.floor-wall::after{content:attr(data-label);position:absolute;bottom:4px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:var(--c-sky-500);white-space:nowrap}
+.floor-wall-3d{transform:translateZ(40px);box-shadow:0 -40px 0 rgba(26,122,232,.04)}
+.floor-ceiling{position:absolute;top:0;left:0;right:0;height:100%;background:rgba(255,255,255,.3);border:2px solid rgba(26,122,232,.15);border-radius:8px;transform:translateZ(40px)}
+
+.unit-specs{display:flex;flex-direction:column}
+.unit-type-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;background:linear-gradient(135deg,var(--c-sky-500),var(--c-sky-700));color:#fff;padding:6px 14px;border-radius:var(--r-pill);margin-bottom:16px;box-shadow:0 4px 12px rgba(26,122,232,.25)}
+.unit-main-area{font-size:40px;font-weight:900;color:var(--c-navy);letter-spacing:-3px;line-height:1;margin-bottom:4px}
+.unit-main-area em{font-style:normal;font-size:16px;font-weight:600;color:#7090b8;letter-spacing:0;margin-left:2px}
+.unit-count{font-size:12px;font-weight:600;color:#7090b8;margin-bottom:20px}
+.unit-spec-rows{display:flex;flex-direction:column;border-radius:var(--r-md);overflow:hidden;border:1.5px solid rgba(255,255,255,.9);margin-bottom:20px}
+.spec-row{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(26,122,232,.07);background:rgba(255,255,255,.6);backdrop-filter:blur(10px)}
+.spec-row:last-child{border-bottom:none}
+.spec-key{font-size:11px;font-weight:700;color:#7090b8;min-width:80px}
+.spec-val{font-size:12px;font-weight:700;color:var(--c-navy);flex:1}
+.spec-val.highlight{color:var(--c-sky-500);font-size:14px}
+.unit-features{display:flex;flex-wrap:wrap;gap:6px}
+.unit-feat{font-size:11px;font-weight:700;padding:4px 11px;border-radius:var(--r-pill);background:rgba(26,122,232,.09);color:var(--c-sky-600);border:1px solid rgba(26,122,232,.15)}
+
+/* ═══ OPTIONS ═══ */
+.option-section{background:linear-gradient(145deg,var(--c-sky-50) 0%,#e8f2ff 100%);border-top:1px solid rgba(26,122,232,.08);border-bottom:1px solid rgba(26,122,232,.08)}
+.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px}
+.option-card{border-radius:var(--r-lg);padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.option-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c-sky-400),var(--c-sky-600))}
+.option-icon{font-size:28px;margin-bottom:8px;display:block}
+.option-name{font-size:12px;font-weight:800;color:var(--c-navy);margin-bottom:3px}
+.option-desc{font-size:10px;color:#7090b8;line-height:1.4}
+.option-free-badge{position:absolute;top:10px;right:10px;font-size:9px;font-weight:900;background:var(--c-accent);color:#fff;padding:2px 7px;border-radius:var(--r-pill)}
+
+/* ═══ INFRA ═══ */
+.infra-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:28px}
+.infra-card{border-radius:var(--r-md);padding:18px 16px;display:flex;align-items:flex-start;gap:14px}
+.infra-card-icon{width:44px;height:44px;border-radius:12px;background:rgba(26,122,232,.1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.infra-card-title{font-size:14px;font-weight:800;color:var(--c-navy);margin-bottom:3px}
+.infra-card-body{font-size:12px;color:#6a8aaa;line-height:1.6}
+
+/* ═══ INVESTMENT ═══ */
+.invest-wrap{background:var(--c-navy);position:relative;overflow:hidden}
+.invest-wrap::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(61,154,245,.2) 0%,transparent 65%)}
+.invest-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px 20px}
+.invest-inner .sec-label{color:#7dbcff}
+.invest-inner .sec-label::before{background:#7dbcff}
+.invest-inner .sec-title{color:#fff}
+.invest-cards{display:grid;grid-template-columns:1fr;gap:14px;margin-top:32px}
+.invest-card{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-xl);padding:28px 24px;text-align:center}
+.invest-card .i-icon{font-size:32px;margin-bottom:12px;display:block}
+.invest-card .i-title{font-size:14px;font-weight:800;color:#fff;margin-bottom:6px}
+.invest-card .i-body{font-size:12px;color:rgba(255,255,255,.6);line-height:1.65}
+.invest-card .i-big{font-size:36px;font-weight:900;color:#7dbcff;letter-spacing:-2px;line-height:1;margin:10px 0 4px}
+.invest-card .i-big em{font-style:normal;font-size:14px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:0}
+.roi-bar-wrap{margin:8px 0}
+.roi-bar-track{height:5px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
+.roi-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--c-sky-400),#7dbcff);animation:growBar 1.5s var(--ease-smooth) 1s both;transform-origin:left}
+@keyframes growBar{from{transform:scaleX(0)}}
+
+.invest-summary{margin-top:28px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-lg);padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.invest-summary-item{text-align:center}
+.invest-summary-item .isi-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.5px;margin-bottom:4px}
+.invest-summary-item .isi-val{font-size:18px;font-weight:900;color:#7dbcff}
+.invest-summary-item .isi-val.white{color:#fff}
+.invest-summary-item .isi-val.green{color:#4ade80}
+.invest-summary-item .isi-val.gold{color:#f59e0b}
+
+/* ═══ INQUIRY FORM ═══ */
+.form-section{background:linear-gradient(150deg,#0d2758 0%,#1450a3 60%,#1a7ae8 100%);position:relative;overflow:hidden}
+.form-section::before{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(125,188,255,.15) 0%,transparent 65%)}
+.form-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:72px 20px;text-align:center}
+.form-inner .sec-label{color:#7dbcff;justify-content:center}
+.form-inner .sec-label::before{background:#7dbcff}
+.form-inner .sec-title{color:#fff;text-align:center;margin-bottom:8px}
+.form-inner .sec-desc{color:rgba(255,255,255,.7);margin:0 auto 32px;text-align:center}
+
+.inquiry-form{background:rgba(255,255,255,.1);backdrop-filter:blur(24px);border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r-xl);padding:28px 20px;box-shadow:0 32px 80px rgba(0,0,0,.3)}
+.form-row{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.form-group label{font-size:11px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.3px}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r-sm);padding:12px 14px;font-size:14px;font-weight:500;color:#fff;font-family:var(--font);outline:none;transition:all .2s;width:100%}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,.4)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(125,188,255,.6);background:rgba(255,255,255,.16);box-shadow:0 0 0 3px rgba(125,188,255,.2)}
+.form-select{appearance:none;cursor:pointer}
+.form-select option{background:#1450a3;color:#fff}
+.form-textarea{resize:vertical;min-height:70px}
+
+.privacy-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:20px;cursor:pointer;text-align:left}
+.privacy-check input[type=checkbox]{width:17px;height:17px;accent-color:var(--c-sky-400);margin-top:1px;flex-shrink:0;cursor:pointer}
+.privacy-check span{font-size:11px;color:rgba(255,255,255,.6);line-height:1.6}
+.privacy-check span a{color:#7dbcff;text-decoration:underline}
+
+.form-submit{width:100%;padding:15px;background:linear-gradient(135deg,#fff 0%,#dbeeff 100%);color:var(--c-sky-700);font-size:15px;font-weight:900;border-radius:var(--r-pill);cursor:pointer;transition:all .28s var(--ease-spring);box-shadow:0 8px 32px rgba(255,255,255,.25);letter-spacing:-.3px;font-family:var(--font)}
+.form-submit:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,255,255,.35)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+
+.tel-alt{margin-top:20px;font-size:12px;color:rgba(255,255,255,.6)}
+.tel-alt a{color:#7dbcff;font-weight:800;font-size:20px;display:block;margin-top:4px;letter-spacing:1px}
+
+/* ═══ FOOTER ═══ */
+footer{background:#071a40;padding:40px 20px;color:rgba(255,255,255,.45);font-size:11px;line-height:1.9}
+footer .footer-inner{max-width:1200px;margin:0 auto}
+footer .f-logo{font-size:15px;font-weight:900;color:#fff;margin-bottom:4px}
+footer .f-logo span{color:var(--c-sky-400)}
+footer .footer-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+footer .footer-links a{color:rgba(255,255,255,.5);transition:color .2s}
+footer .footer-links a:hover{color:var(--c-sky-400)}
+footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
+
+/* ═══ FIXED BOTTOM CTA ═══ */
+.bottom-cta{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(26,122,232,.12);box-shadow:0 -4px 24px rgba(26,122,232,.12);padding:10px 16px;display:flex;gap:10px;align-items:center}
+.bottom-cta-call{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;background:rgba(26,122,232,.1);border-radius:var(--r-pill);font-size:13px;font-weight:800;color:var(--c-sky-600)}
+.bottom-cta-inquiry{flex:2;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;background:linear-gradient(135deg,var(--c-sky-500),var(--c-sky-700));border-radius:var(--r-pill);font-size:14px;font-weight:900;color:#fff;box-shadow:0 4px 16px rgba(26,122,232,.35);animation:ctaPulse 2s infinite}
+@keyframes ctaPulse{0%,100%{box-shadow:0 4px 16px rgba(26,122,232,.35)}50%{box-shadow:0 4px 24px rgba(26,122,232,.55)}}
+
+/* ═══ TOAST ═══ */
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-100px);z-index:2000;background:var(--c-navy);color:#fff;padding:14px 28px;border-radius:var(--r-pill);font-size:13px;font-weight:700;box-shadow:0 8px 32px rgba(10,37,88,.4);transition:transform .4s var(--ease-spring);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .65s var(--ease-spring),transform .65s var(--ease-spring)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  .section{padding:96px 32px}
+  .section-inner{padding:0 32px}
+  .header-inner{padding:14px 32px}
+  .premium-grid{grid-template-columns:repeat(2,1fr)}
+  .unit-display{grid-template-columns:1fr 1fr;gap:40px}
+  .infra-grid{grid-template-columns:repeat(2,1fr)}
+  .invest-cards{grid-template-columns:repeat(3,1fr)}
+  .invest-summary{grid-template-columns:repeat(4,1fr)}
+  .form-row{grid-template-columns:1fr 1fr}
+  .option-grid{grid-template-columns:repeat(4,1fr)}
+  .gallery-item{flex:0 0 45%}
+  .hero{padding:120px 32px 80px}
+  .transport-inner{padding:96px 32px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .transport-map-mock{margin-top:0}
+}
+@media(min-width:1024px){
+  .premium-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div class="logo-badge">🏙️</div>
+      <div class="logo-text">
+        문산역 벽산블루밍 파르페온
+        <span>BLOOMING PARFEON</span>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══ SLIDE NAV ═══ -->
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="slide-nav" id="slideNav">
+  <a href="#top" data-nav><span class="nav-icon">🏠</span>홈</a>
+  <a href="#gallery" data-nav><span class="nav-icon">📸</span>단지 갤러리</a>
+  <a href="#premium" data-nav><span class="nav-icon">💎</span>프리미엄</a>
+  <a href="#transport" data-nav><span class="nav-icon">🚉</span>교통</a>
+  <a href="#units" data-nav><span class="nav-icon">📐</span>평형 안내</a>
+  <a href="#options" data-nav><span class="nav-icon">🎁</span>무상 옵션</a>
+  <a href="#infra" data-nav><span class="nav-icon">🏥</span>생활 인프라</a>
+  <a href="#invest" data-nav><span class="nav-icon">📈</span>투자 가치</a>
+  <a href="#inquiry" data-nav><span class="nav-icon">📋</span>상담 신청</a>
+  <div class="nav-tel-box">
+    <div class="nav-tel-label">전화 상담</div>
+    <a href="tel:1555-1078">1555-1078</a>
+    <a href="tel:010-8291-2937" style="font-size:16px">010-8291-2937</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hero-bg-main"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-skyline"></div>
+    <div class="hero-light"></div>
+    <div class="hero-particle" style="width:8px;height:8px;left:15%;top:30%;animation-delay:0s;animation-duration:7s"></div>
+    <div class="hero-particle" style="width:5px;height:5px;left:25%;top:60%;animation-delay:1.5s;animation-duration:9s"></div>
+    <div class="hero-particle" style="width:10px;height:10px;left:70%;top:25%;animation-delay:.8s;animation-duration:6s"></div>
+    <div class="hero-particle" style="width:6px;height:6px;left:80%;top:55%;animation-delay:2s;animation-duration:8s"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      파주시 북부권역 No.1 랜드마크 분양
+    </div>
+
+    <h1 class="hero-title">
+      <span class="sub-title">문산역 도보 10초 · 초역세권</span>
+      <span class="main-title">벽산블루밍<br/>파르페온</span>
+      <span class="brand-sub">지하 4층 — 지상 40층 · 432세대</span>
+    </h1>
+
+    <div class="hero-chips">
+      <div class="hero-chip">🚉 문산역 도보 10초</div>
+      <div class="hero-chip">🏙️ 문산 최초 40층</div>
+      <div class="hero-chip">🌊 임진강뷰 유일</div>
+      <div class="hero-chip">📚 농어촌 특별전형</div>
+      <div class="hero-chip">🏠 주택수 미포함</div>
+      <div class="hero-chip">💰 세금 ZERO</div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="#inquiry" class="cta-primary">📋 무료 상담 신청</a>
+      <a href="tel:1555-1078" class="cta-secondary">📞 1555-1078</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">432<em>세대</em></div><div class="hero-stat-label">총 세대수</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">40<em>층</em></div><div class="hero-stat-label">최고 층수</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">10<em>초</em></div><div class="hero-stat-label">문산역</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">28<em>%</em></div><div class="hero-stat-label">예상 수익률</div></div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY (이미지 플레이스홀더) ═══ -->
+<section class="section" id="gallery">
+  <div class="reveal">
+    <div class="sec-label">Gallery</div>
+    <h2 class="sec-title">단지 <span class="accent">갤러리</span></h2>
+    <p class="sec-desc">벽산블루밍 파르페온의 실제 모습과 조감도를 확인하세요.</p>
+  </div>
+  <div class="gallery-scroll reveal">
+    <div class="gallery-item">
+      <div class="img-placeholder"><span class="ph-icon">🏢</span>조감도 이미지</div>
+    </div>
+    <div class="gallery-item">
+      <div class="img-placeholder"><span class="ph-icon">🌅</span>임진강뷰 이미지</div>
+    </div>
+    <div class="gallery-item">
+      <div class="img-placeholder"><span class="ph-icon">🏠</span>단지 외관 이미지</div>
+    </div>
+    <div class="gallery-item">
+      <div class="img-placeholder"><span class="ph-icon">🛋️</span>실내 인테리어 이미지</div>
+    </div>
+    <div class="gallery-item">
+      <div class="img-placeholder"><span class="ph-icon">🏞️</span>단지 배치도 이미지</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PREMIUM ═══ -->
+<section class="section" id="premium">
+  <div class="reveal">
+    <div class="sec-label">Premium Value</div>
+    <h2 class="sec-title">왜 <span class="accent">벽산블루밍 파르페온</span>인가</h2>
+    <p class="sec-desc">파주 북부 최강의 입지 조건과 민간임대의 구조적 장점이 결합된, 문산 역사상 가장 특별한 주거 랜드마크입니다.</p>
+  </div>
+  <div class="premium-grid reveal">
+    <div class="glass-card premium-card">
+      <div class="card-num">01</div>
+      <span class="card-icon">🚉</span>
+      <div class="card-badge">SUPER STATION-FRONT</div>
+      <div class="card-title">문산역 도보 단 10초</div>
+      <div class="card-body">경의중앙선 문산역과 건물이 사실상 맞닿아 있는 수준의 초역세권 입지. 서울·일산까지 환승 없이 직접 연결되며, GTX-A 대곡역 환승으로 서울역 20분대 진입이 가능합니다.</div>
+    </div>
+    <div class="glass-card premium-card featured">
+      <div class="card-num">02</div>
+      <span class="card-icon">🏙️</span>
+      <div class="card-badge">FIRST &amp; ONLY</div>
+      <div class="card-title">문산 최초 40층 스카이라인 랜드마크</div>
+      <div class="card-body">문산 일대 그 어떤 건물도 도달하지 못한 40층 초고층 설계. 임진강과 파주 전경이 내 눈 앞에 펼쳐지는 파노라마 조망은 이 단지에서만 누릴 수 있는 독점적 가치입니다.</div>
+    </div>
+    <div class="glass-card premium-card">
+      <div class="card-num">03</div>
+      <span class="card-icon">📚</span>
+      <div class="card-badge">EDUCATION PREMIUM</div>
+      <div class="card-title">수도권 유일 농어촌 특별전형 혜택</div>
+      <div class="card-body">문산읍 거주만으로 대입 농어촌 특별전형 지원 자격 획득. 수도권 내에서 이 혜택을 누릴 수 있는 사실상 유일한 거점입니다.</div>
+    </div>
+    <div class="glass-card premium-card">
+      <div class="card-num">04</div>
+      <span class="card-icon">🏠</span>
+      <div class="card-badge">TAX FREE LIVING</div>
+      <div class="card-title">주택수 미포함 · 세금 ZERO</div>
+      <div class="card-body">임대 기간 중 주택수에 포함되지 않아 취득세·재산세·종부세·양도세 전혀 없습니다. 다주택자도 자유롭게 가입 가능.</div>
+    </div>
+    <div class="glass-card premium-card">
+      <div class="card-num">05</div>
+      <span class="card-icon">🔒</span>
+      <div class="card-badge">SAFE &amp; SECURE</div>
+      <div class="card-title">HUG 보증으로 전세사기 리스크 ZERO</div>
+      <div class="card-body">주택도시보증공사(HUG) 임대보증금 보증 의무 가입으로 보증금 미반환 사고를 법적으로 차단합니다.</div>
+    </div>
+    <div class="glass-card premium-card">
+      <div class="card-num">06</div>
+      <span class="card-icon">📈</span>
+      <div class="card-badge">INVESTMENT VALUE</div>
+      <div class="card-title">10년 후 시세 80% 분양전환</div>
+      <div class="card-body">10년 임대 의무기간 만료 후 주변 시세의 80% 이내 가격으로 내 집 마련 기회 제공.</div>
+    </div>
+  </div>
+
+  <!-- 실물 사진 공간 -->
+  <div class="reveal" style="margin-top:32px">
+    <div class="img-placeholder" style="aspect-ratio:21/9">
+      <span class="ph-icon">🖼️</span>단지 파노라마 실물 사진
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRANSPORT ═══ -->
+<div class="section-full transport-wrap" id="transport">
+  <div class="transport-inner">
+    <div class="reveal">
+      <div class="sec-label">Transportation Hub</div>
+      <h2 class="sec-title" style="color:#fff">모든 교통의<br/>중심에 서다</h2>
+      <p class="sec-desc">문산역을 시작점으로 서울·일산·파주 전역이 손에 닿는 거리.</p>
+
+      <div class="transport-routes">
+        <div class="route-item">
+          <div class="route-badge">🚃</div>
+          <div class="route-info"><div class="route-name">경의중앙선 — 도보 10초</div><div class="route-time">용산역 약 55분</div></div>
+          <div class="route-status open">운행 중</div>
+        </div>
+        <div class="route-item">
+          <div class="route-badge">⚡</div>
+          <div class="route-info"><div class="route-name">GTX-A — 대곡역 환승</div><div class="route-time">서울역 약 20분대</div></div>
+          <div class="route-status open">운행 중</div>
+        </div>
+        <div class="route-item">
+          <div class="route-badge">🚄</div>
+          <div class="route-info"><div class="route-name">KTX 파주 연장 추진</div><div class="route-time">문산역 KTX 정차 추진 중</div></div>
+          <div class="route-status plan">추진 중</div>
+        </div>
+        <div class="route-item">
+          <div class="route-badge">🛣️</div>
+          <div class="route-info"><div class="route-name">수도권 2순환 고속도로</div><div class="route-time">2027년 개통 예정</div></div>
+          <div class="route-status plan">2027</div>
+        </div>
+        <div class="route-item">
+          <div class="route-badge">🚗</div>
+          <div class="route-info"><div class="route-name">평택파주고속도로</div><div class="route-time">서울 방향 직결</div></div>
+          <div class="route-status open">운행 중</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="transport-map-mock reveal">
+      <svg viewBox="0 0 320 300" class="map-svg-wrap" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/></pattern></defs>
+        <rect width="320" height="300" fill="url(#grid)"/>
+        <line x1="40" y1="150" x2="280" y2="150" stroke="#4ade80" stroke-width="3" stroke-linecap="round" class="map-line" style="animation-delay:.2s"/>
+        <line x1="160" y1="40" x2="160" y2="260" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" class="map-line" style="animation-delay:.5s"/>
+        <line x1="40" y1="150" x2="280" y2="150" stroke="#60a5fa" stroke-width="2" stroke-dasharray="8,5" opacity=".5" class="map-line" style="animation-delay:.8s"/>
+        <g class="map-station" style="animation-delay:1s"><circle cx="80" cy="150" r="5" fill="rgba(255,255,255,.3)" stroke="#4ade80" stroke-width="2"/><text x="80" y="140" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">일산</text></g>
+        <g class="map-station" style="animation-delay:1.1s"><circle cx="220" cy="150" r="5" fill="rgba(255,255,255,.3)" stroke="#4ade80" stroke-width="2"/><text x="220" y="140" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">운정</text></g>
+        <g class="map-station" style="animation-delay:1.2s"><circle cx="160" cy="80" r="5" fill="rgba(255,255,255,.3)" stroke="#f59e0b" stroke-width="2"/><text x="185" y="84" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">대곡(GTX)</text></g>
+        <g class="map-station" style="animation-delay:1.3s"><circle cx="160" cy="220" r="5" fill="rgba(255,255,255,.3)" stroke="#f59e0b" stroke-width="2"/><text x="175" y="234" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">서울</text></g>
+        <g class="map-our">
+          <circle cx="160" cy="150" r="14" fill="rgba(61,154,245,.3)" stroke="#3d9af5" stroke-width="2.5"/>
+          <circle cx="160" cy="150" r="7" fill="#fff"/>
+          <circle cx="160" cy="150" r="14" fill="none" stroke="rgba(125,188,255,.4)" stroke-width="1"><animate attributeName="r" values="14;26;14" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/></circle>
+          <text x="160" y="175" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif">문산역</text>
+          <text x="160" y="188" text-anchor="middle" font-size="9" fill="#7dbcff" font-family="Pretendard,sans-serif">도보 10초 ★</text>
+        </g>
+        <g transform="translate(16,265)">
+          <line x1="0" y1="6" x2="18" y2="6" stroke="#4ade80" stroke-width="2.5"/><text x="22" y="10" font-size="8" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">경의중앙선</text>
+          <line x1="80" y1="6" x2="98" y2="6" stroke="#f59e0b" stroke-width="2.5"/><text x="102" y="10" font-size="8" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">GTX-A</text>
+          <line x1="155" y1="6" x2="173" y2="6" stroke="#60a5fa" stroke-width="2" stroke-dasharray="5,3"/><text x="177" y="10" font-size="8" fill="rgba(255,255,255,.5)" font-family="Pretendard,sans-serif">KTX(추진)</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ UNIT TYPES — 3D ═══ -->
+<section class="section" id="units">
+  <div class="reveal">
+    <div class="sec-label">Unit Types</div>
+    <h2 class="sec-title">평형 안내</h2>
+    <p class="sec-desc">총 432세대. 59㎡ 2타입 288세대, 84㎡ 144세대.</p>
+  </div>
+  <div class="reveal" style="margin-top:28px">
+    <div class="unit-tabs">
+      <div class="unit-tab active" onclick="switchUnit('59A',this)">59A · 26평</div>
+      <div class="unit-tab" onclick="switchUnit('59B',this)">59B · 26평</div>
+      <div class="unit-tab" onclick="switchUnit('84',this)">84㎡ · 36평</div>
+    </div>
+  </div>
+  <div class="unit-display reveal" id="unitDisplay">
+    <!-- 3D Floor Plan -->
+    <div class="glass-card" style="border-radius:var(--r-xl);padding:20px;overflow:hidden">
+      <div class="unit-3d-wrap">
+        <div class="unit-3d" id="floorplan3D">
+          <!-- 59A default -->
+          <div class="floor-base"></div>
+          <div class="floor-wall floor-wall-3d" style="left:5%;top:5%;width:50%;height:42%" data-label="거실"></div>
+          <div class="floor-wall floor-wall-3d" style="left:57%;top:5%;width:38%;height:30%" data-label="주방/식당"></div>
+          <div class="floor-wall floor-wall-3d" style="left:5%;top:50%;width:40%;height:45%" data-label="안방"></div>
+          <div class="floor-wall floor-wall-3d" style="left:48%;top:50%;width:25%;height:22%" data-label="침실2"></div>
+          <div class="floor-wall floor-wall-3d" style="left:48%;top:75%;width:25%;height:20%" data-label="침실3"></div>
+          <div class="floor-wall floor-wall-3d" style="left:75%;top:38%;width:20%;height:20%" data-label="욕실1"></div>
+          <div class="floor-wall floor-wall-3d" style="left:75%;top:60%;width:20%;height:18%" data-label="욕실2"></div>
+          <div class="floor-wall floor-wall-3d" style="left:57%;top:38%;width:16%;height:10%" data-label="현관"></div>
+        </div>
+      </div>
+      <!-- 도면 이미지 플레이스홀더 -->
+      <div class="img-placeholder" style="aspect-ratio:4/3;margin-top:16px">
+        <span class="ph-icon">📐</span>
+        <span id="floorplanLabel">59A형 도면 이미지</span>
+      </div>
+    </div>
+    <!-- Specs -->
+    <div class="unit-specs">
+      <div class="unit-type-badge" id="unitBadge">🏠 59㎡ A형 · 총 144세대</div>
+      <div class="unit-main-area" id="unitArea">59.93<em>㎡</em></div>
+      <div class="unit-count" id="unitCount">공급면적 87.71㎡ (26.53평) · 계약면적 138.28㎡ (41.83평)</div>
+      <div class="unit-spec-rows">
+        <div class="spec-row"><div class="spec-key">전용면적</div><div class="spec-val" id="s-private">59.93㎡ (18.13평)</div></div>
+        <div class="spec-row"><div class="spec-key">공급면적</div><div class="spec-val" id="s-supply">87.71㎡ (26.53평)</div></div>
+        <div class="spec-row"><div class="spec-key">계약면적</div><div class="spec-val" id="s-contract">138.28㎡ (41.83평)</div></div>
+        <div class="spec-row"><div class="spec-key">세대수</div><div class="spec-val" id="s-units">144세대 (전체의 33.33%)</div></div>
+        <div class="spec-row"><div class="spec-key">구조</div><div class="spec-val" id="s-layout">3룸 · 욕실 2개 · 발코니 확장형</div></div>
+        <div class="spec-row"><div class="spec-key">임대가 (예시)</div><div class="spec-val highlight" id="s-rent">221,525,500원</div></div>
+      </div>
+      <div class="unit-features">
+        <span class="unit-feat">❄️ 시스템에어컨 4대</span>
+        <span class="unit-feat">🍳 인덕션</span>
+        <span class="unit-feat">🥶 냉장고+김치냉장고</span>
+        <span class="unit-feat">🍽️ 식기세척기</span>
+        <span class="unit-feat">👕 드럼세탁기+건조기</span>
+        <span class="unit-feat">🔆 광파오븐</span>
+        <span class="unit-feat">🏡 발코니 확장</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPTIONS ═══ -->
+<div class="section-full option-section" id="options">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">Free Options</div>
+      <h2 class="sec-title" style="text-align:center">선착순 <span class="accent">100세대</span><br/>10종 옵션 무상 제공</h2>
+      <p class="sec-desc" style="margin:0 auto;text-align:center">계약 순서에 따라 총 100세대에 한하여 아래 품목을 무상으로 제공합니다.</p>
+    </div>
+    <div class="option-grid reveal">
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">❄️</span><div class="option-name">시스템 에어컨</div><div class="option-desc">거실+침실 총 4대</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">🍳</span><div class="option-name">인덕션</div><div class="option-desc">빌트인 주방 설치</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">🥶</span><div class="option-name">냉장고+김치냉장고</div><div class="option-desc">대형 양문형 세트</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">🍽️</span><div class="option-name">식기세척기</div><div class="option-desc">빌트인 타입</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">👕</span><div class="option-name">드럼 세탁기</div><div class="option-desc">대용량 빌트인</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">🌀</span><div class="option-name">드럼 건조기</div><div class="option-desc">히트펌프 건조기</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">🔆</span><div class="option-name">광파 오븐</div><div class="option-desc">빌트인 주방 설치</div></div>
+      <div class="glass-card option-card"><div class="option-free-badge">무상</div><span class="option-icon">🏠</span><div class="option-name">발코니 확장</div><div class="option-desc">전면 확장 공사</div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:20px;font-size:11px;color:#7090b8">
+      ※ 옵션 품목은 제품 단종 및 시공 상황에 의해 변경될 수 있습니다.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INFRA ═══ -->
+<section class="section" id="infra">
+  <div class="reveal">
+    <div class="sec-label">Life Infrastructure</div>
+    <h2 class="sec-title">반경 500m, <span class="accent">모든 것이 갖춰진</span> 생활권</h2>
+    <p class="sec-desc">대형마트·병원·학교·은행·문화시설이 도보권에 밀집.</p>
+  </div>
+
+  <!-- 주변 환경 이미지 공간 -->
+  <div class="gallery-scroll reveal" style="margin-top:16px">
+    <div class="gallery-item"><div class="img-placeholder"><span class="ph-icon">🛒</span>주변 상권 이미지</div></div>
+    <div class="gallery-item"><div class="img-placeholder"><span class="ph-icon">🏫</span>학교 이미지</div></div>
+    <div class="gallery-item"><div class="img-placeholder"><span class="ph-icon">🏥</span>병원/편의시설 이미지</div></div>
+  </div>
+
+  <div class="infra-grid reveal">
+    <div class="glass-card infra-card"><div class="infra-card-icon">🛒</div><div><div class="infra-card-title">쇼핑 인프라</div><div class="infra-card-body">홈플러스, 하나로마트, 문산중앙시장 도보권.</div></div></div>
+    <div class="glass-card infra-card"><div class="infra-card-icon">🎬</div><div><div class="infra-card-title">문화 · 여가</div><div class="infra-card-body">CGV 파주문산점, 프랜차이즈 카페, 외식 상권 밀집.</div></div></div>
+    <div class="glass-card infra-card"><div class="infra-card-icon">🏥</div><div><div class="infra-card-title">의료 · 편의</div><div class="infra-card-body">문산중앙병원, 주요 은행, 다이소 등 생활 편의시설 집약.</div></div></div>
+    <div class="glass-card infra-card"><div class="infra-card-icon">🚌</div><div><div class="infra-card-title">교통 · 행정</div><div class="infra-card-body">문산읍 행정복지센터, 문산시외버스터미널 인접.</div></div></div>
+    <div class="glass-card infra-card"><div class="infra-card-icon">📚</div><div><div class="infra-card-title">교육 환경</div><div class="infra-card-body">임진초·문산초·문산북중·파주고 도보권. 유해시설 없는 안전한 학습 환경.</div></div></div>
+    <div class="glass-card infra-card"><div class="infra-card-icon">🌊</div><div><div class="infra-card-title">자연 환경</div><div class="infra-card-body">임진강·문산천 자연 조망. 40층에서 파노라마 경관 독점.</div></div></div>
+  </div>
+</section>
+
+<!-- ═══ INVESTMENT ═══ -->
+<div class="section-full invest-wrap" id="invest">
+  <div class="invest-inner">
+    <div class="reveal">
+      <div class="sec-label">Investment Value</div>
+      <h2 class="sec-title" style="color:#fff">투자 가치 분석</h2>
+    </div>
+    <div class="invest-cards reveal">
+      <div class="invest-card">
+        <span class="i-icon">💰</span>
+        <div class="i-title">예상 연 수익률</div>
+        <div class="i-big">28<em>%</em></div>
+        <div class="roi-bar-wrap"><div class="roi-bar-track"><div class="roi-bar-fill" style="width:72%"></div></div></div>
+        <div class="i-body">HUG 보증 대출(80%) 활용 시 실투자금 대비 예상 연간 수익률.</div>
+      </div>
+      <div class="invest-card">
+        <span class="i-icon">🏠</span>
+        <div class="i-title">월 예상 순수익 (59A)</div>
+        <div class="i-big">약 70<em>만원</em></div>
+        <div class="roi-bar-wrap"><div class="roi-bar-track"><div class="roi-bar-fill" style="width:55%;animation-delay:1.2s"></div></div></div>
+        <div class="i-body">임대가 2.2억 기준, HUG 대출 이자 제외 실수익.</div>
+      </div>
+      <div class="invest-card">
+        <span class="i-icon">📈</span>
+        <div class="i-title">10년 후 분양전환</div>
+        <div class="i-big">시세<em>의</em> 80<em>%</em></div>
+        <div class="roi-bar-wrap"><div class="roi-bar-track"><div class="roi-bar-fill" style="width:80%;animation-delay:1.4s"></div></div></div>
+        <div class="i-body">임대 의무기간 만료 후 주변 시세 80% 이내로 내 집 마련.</div>
+      </div>
+    </div>
+    <div class="invest-summary reveal">
+      <div class="invest-summary-item"><div class="isi-label">임대가 (59A 예시)</div><div class="isi-val">221,525,500원</div></div>
+      <div class="invest-summary-item"><div class="isi-label">HUG 보증 대출 (80%)</div><div class="isi-val white">177,220,400원</div></div>
+      <div class="invest-summary-item"><div class="isi-label">실 투자금</div><div class="isi-val green">24,305,100원</div></div>
+      <div class="invest-summary-item"><div class="isi-label">월 임대료</div><div class="isi-val gold">950,000원</div></div>
+    </div>
+    <div class="reveal" style="font-size:10px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px">※ 상기 수치는 예시이며 계약 시 다소 차이가 있을 수 있습니다.</div>
+  </div>
+</div>
+
+<!-- ═══ INQUIRY FORM ═══ -->
+<div class="form-section" id="inquiry">
+  <div class="form-inner">
+    <div class="sec-label">Free Consultation</div>
+    <h2 class="sec-title" style="color:#fff;text-align:center">지금 바로<br/>무료 상담 신청</h2>
+    <p class="sec-desc" style="color:rgba(255,255,255,.7);margin:0 auto 28px;text-align:center">전문 상담사가 빠르게 연락드립니다.</p>
+
+    <form class="inquiry-form reveal" id="inquiryForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">성함 *</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="이름을 입력하세요" required/>
+        </div>
+        <div class="form-group">
+          <label for="phone">연락처 *</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="010-0000-0000" required/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="interest">관심 평형</label>
+          <select class="form-input form-select" id="interest" name="interest">
+            <option value="">평형 선택</option>
+            <option value="59A">59㎡ A형 (26평)</option>
+            <option value="59B">59㎡ B형 (26평)</option>
+            <option value="84">84㎡ (36평)</option>
+            <option value="all">모두 관심 있음</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="purpose">관심 목적</label>
+          <select class="form-input form-select" id="purpose" name="purpose">
+            <option value="">목적 선택</option>
+            <option value="live">실거주</option>
+            <option value="invest">투자 (월세 수익)</option>
+            <option value="both">실거주 + 투자</option>
+            <option value="edu">교육 목적 이주</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">문의 사항 (선택)</label>
+        <textarea class="form-input form-textarea" id="message" name="message" placeholder="궁금한 점을 자유롭게 입력해 주세요"></textarea>
+      </div>
+      <label class="privacy-check">
+        <input type="checkbox" id="privacy" required/>
+        <span><a href="#">개인정보 수집·이용에 동의</a>합니다. 수집된 정보는 상담 목적으로만 사용됩니다.</span>
+      </label>
+      <button type="submit" class="form-submit" id="submitBtn">📋 무료 상담 신청하기</button>
+    </form>
+
+    <div class="tel-alt">
+      또는 전화로 바로 상담하세요
+      <a href="tel:1555-1078">1555-1078</a>
+      <a href="tel:010-8291-2937" style="font-size:16px;margin-top:2px">010-8291-2937</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="f-logo">벽산블루밍 <span>파르페온</span></div>
+    <div>파주시 문산읍 문산리 17-86번지 일원</div>
+    <div>시행: 주식회사 새로지음 · 시공: 벽산건설산업(外 컨소시엄)</div>
+    <div class="footer-links">
+      <a href="#top">홈</a>
+      <a href="#premium">프리미엄</a>
+      <a href="#transport">교통</a>
+      <a href="#units">평형안내</a>
+      <a href="#infra">생활인프라</a>
+      <a href="#invest">투자가치</a>
+      <a href="#inquiry">상담신청</a>
+    </div>
+    <div class="disclaimer">
+      본 홈페이지에 기재된 내용은 입주자 모집 안내문이 아니며, 법적 효력이 없습니다.<br/>
+      건물 외관·내부 이미지·배치도·평면도 등은 예시이며 실제와 다를 수 있습니다.<br/>
+      임대가, 대출한도, 수익률 등은 예시이며 변동될 수 있습니다.<br/>
+      © 2025 문산역 벽산블루밍 파르페온. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FIXED BOTTOM CTA ═══ -->
+<div class="bottom-cta">
+  <a href="tel:1555-1078" class="bottom-cta-call">📞 전화상담</a>
+  <a href="#inquiry" class="bottom-cta-inquiry">📋 문의하기</a>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── Header scroll ── */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── Hamburger menu ── */
+const hamburger = document.getElementById('hamburgerBtn');
+const slideNav = document.getElementById('slideNav');
+const overlay = document.getElementById('navOverlay');
+
+function toggleNav() {
+  hamburger.classList.toggle('active');
+  slideNav.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = slideNav.classList.contains('open') ? 'hidden' : '';
+}
+hamburger.addEventListener('click', toggleNav);
+overlay.addEventListener('click', toggleNav);
+document.querySelectorAll('[data-nav]').forEach(a => {
+  a.addEventListener('click', () => {
+    if (slideNav.classList.contains('open')) toggleNav();
+  });
+});
+
+/* ── Reveal on scroll ── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── Unit tabs ── */
+const unitData = {
+  '59A': {
+    badge: '🏠 59㎡ A형 · 총 144세대', area: '59.93', unit: '㎡',
+    count: '공급면적 87.71㎡ (26.53평) · 계약면적 138.28㎡ (41.83평)',
+    private: '59.93㎡ (18.13평)', supply: '87.71㎡ (26.53평)',
+    contract: '138.28㎡ (41.83평)', units: '144세대 (전체의 33.33%)',
+    layout: '3룸 · 욕실 2개 · 발코니 확장형', rent: '221,525,500원',
+    rooms: [
+      {l:5,t:5,w:50,h:42,label:'거실'},{l:57,t:5,w:38,h:30,label:'주방/식당'},
+      {l:5,t:50,w:40,h:45,label:'안방'},{l:48,t:50,w:25,h:22,label:'침실2'},
+      {l:48,t:75,w:25,h:20,label:'침실3'},{l:75,t:38,w:20,h:20,label:'욕실1'},
+      {l:75,t:60,w:20,h:18,label:'욕실2'},{l:57,t:38,w:16,h:10,label:'현관'}
+    ]
+  },
+  '59B': {
+    badge: '🏠 59㎡ B형 · 총 144세대', area: '59.74', unit: '㎡',
+    count: '공급면적 86.04㎡ (26.03평) · 계약면적 136.44㎡ (41.27평)',
+    private: '59.74㎡ (18.07평)', supply: '86.04㎡ (26.03평)',
+    contract: '136.44㎡ (41.27평)', units: '144세대 (전체의 33.33%)',
+    layout: '3룸 · 욕실 2개 · 발코니 확장형', rent: '219,800,000원 (예상)',
+    rooms: [
+      {l:5,t:5,w:45,h:45,label:'거실'},{l:52,t:5,w:43,h:28,label:'주방/식당'},
+      {l:5,t:53,w:42,h:42,label:'안방'},{l:50,t:36,w:22,h:28,label:'침실2'},
+      {l:50,t:67,w:22,h:28,label:'침실3'},{l:75,t:36,w:20,h:22,label:'욕실1'},
+      {l:75,t:60,w:20,h:18,label:'욕실2'},{l:52,t:36,w:16,h:10,label:'현관'}
+    ]
+  },
+  '84': {
+    badge: '🏡 84㎡형 · 총 144세대', area: '84.77', unit: '㎡',
+    count: '공급면적 122.06㎡ (36.92평) · 계약면적 193.59㎡ (58.56평)',
+    private: '84.77㎡ (25.64평)', supply: '122.06㎡ (36.92평)',
+    contract: '193.59㎡ (58.56평)', units: '144세대 (전체의 33.33%)',
+    layout: '4룸 · 욕실 2개 · 발코니 확장형', rent: '280,000,000원 (예상)',
+    rooms: [
+      {l:5,t:5,w:50,h:38,label:'거실'},{l:57,t:5,w:38,h:25,label:'주방/식당'},
+      {l:5,t:46,w:35,h:50,label:'안방'},{l:42,t:46,w:25,h:25,label:'침실2'},
+      {l:42,t:73,w:25,h:23,label:'침실3'},{l:70,t:33,w:25,h:23,label:'침실4'},
+      {l:70,t:58,w:25,h:18,label:'욕실1'},{l:70,t:78,w:25,h:18,label:'욕실2'},
+      {l:57,t:33,w:11,h:10,label:'현관'}
+    ]
+  }
+};
+
+function switchUnit(type, btn) {
+  document.querySelectorAll('.unit-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const d = unitData[type];
+  document.getElementById('unitBadge').textContent = d.badge;
+  document.getElementById('unitArea').innerHTML = d.area + '<em>' + d.unit + '</em>';
+  document.getElementById('unitCount').textContent = d.count;
+  document.getElementById('s-private').textContent = d.private;
+  document.getElementById('s-supply').textContent = d.supply;
+  document.getElementById('s-contract').textContent = d.contract;
+  document.getElementById('s-units').textContent = d.units;
+  document.getElementById('s-layout').textContent = d.layout;
+  document.getElementById('s-rent').textContent = d.rent;
+  document.getElementById('floorplanLabel').textContent = type === '84' ? '84㎡형 도면 이미지' : `59${type.replace('59','')}형 도면 이미지`;
+  // Update 3D floorplan
+  const fp = document.getElementById('floorplan3D');
+  fp.querySelectorAll('.floor-wall').forEach(w => w.remove());
+  d.rooms.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'floor-wall floor-wall-3d';
+    div.style.cssText = `left:${r.l}%;top:${r.t}%;width:${r.w}%;height:${r.h}%`;
+    div.setAttribute('data-label', r.label);
+    fp.appendChild(div);
+  });
+}
+
+/* ── Toast ── */
+function showToast(msg, duration = 3000) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+/* ── Form submission → Google Sheets ── */
+// ⚠️ SETUP REQUIRED:
+// 1. Create a Google Sheet
+// 2. Go to Extensions → Apps Script
+// 3. Paste this code:
+/*
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    new Date(),
+    data.name,
+    data.phone,
+    data.interest,
+    data.purpose,
+    data.message
+  ]);
+  return ContentService.createTextOutput(JSON.stringify({result:'success'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+*/
+// 4. Deploy as Web App (Execute as: Me, Access: Anyone)
+// 5. Paste the URL below:
+
+const GOOGLE_SHEETS_URL = ''; // ← 여기에 Google Apps Script 배포 URL 입력
+
+document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const formData = {
+    name: document.getElementById('name').value,
+    phone: document.getElementById('phone').value,
+    interest: document.getElementById('interest').value,
+    purpose: document.getElementById('purpose').value,
+    message: document.getElementById('message').value,
+    timestamp: new Date().toISOString()
+  };
+
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+
+  try {
+    if (GOOGLE_SHEETS_URL) {
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+    }
+    // Supabase 연동 (선택)
+    // const SUPABASE_URL = '';
+    // const SUPABASE_KEY = '';
+    // await fetch(`${SUPABASE_URL}/rest/v1/inquiries`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'apikey': SUPABASE_KEY,
+    //     'Authorization': `Bearer ${SUPABASE_KEY}`
+    //   },
+    //   body: JSON.stringify(formData)
+    // });
+
+    showToast(`${formData.name}님, 상담 신청이 완료되었습니다!`);
+    e.target.reset();
+  } catch (err) {
+    showToast('전송에 실패했습니다. 전화로 문의해주세요.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '📋 무료 상담 신청하기';
+  }
+});
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
