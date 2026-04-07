@@ -961,7 +961,9 @@ function doPost(e) {
 // 4. Deploy as Web App (Execute as: Me, Access: Anyone)
 // 5. Paste the URL below:
 
-const GOOGLE_SHEETS_URL = ''; // ← 여기에 Google Apps Script 배포 URL 입력
+const SUPABASE_URL = 'https://nniuwbckaywgbwyczhip.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uaXV3YmNrYXl3Z2J3eWN6aGlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NzEyNTYsImV4cCI6MjA5MTE0NzI1Nn0.QCtM9KGAkWq4F65yNT6X4G2iLo-gGkAmhaWponh-woc';
+const GOOGLE_SHEETS_URL = ''; // Step 4에서 입력
 
 document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -971,34 +973,34 @@ document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
     phone: document.getElementById('phone').value,
     interest: document.getElementById('interest').value,
     purpose: document.getElementById('purpose').value,
-    message: document.getElementById('message').value,
-    timestamp: new Date().toISOString()
+    message: document.getElementById('message').value
   };
 
   btn.disabled = true;
   btn.textContent = '전송 중...';
 
   try {
+    // Supabase 저장
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/inquiries`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(formData)
+    });
+    if (!res.ok) throw new Error('DB 저장 실패');
+
+    // Google Sheets 동시 저장 (URL 설정 시)
     if (GOOGLE_SHEETS_URL) {
-      await fetch(GOOGLE_SHEETS_URL, {
-        method: 'POST',
-        mode: 'no-cors',
+      fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+        body: JSON.stringify({ ...formData, timestamp: new Date().toISOString() })
+      }).catch(() => {});
     }
-    // Supabase 연동 (선택)
-    // const SUPABASE_URL = '';
-    // const SUPABASE_KEY = '';
-    // await fetch(`${SUPABASE_URL}/rest/v1/inquiries`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'apikey': SUPABASE_KEY,
-    //     'Authorization': `Bearer ${SUPABASE_KEY}`
-    //   },
-    //   body: JSON.stringify(formData)
-    // });
 
     showToast(`${formData.name}님, 상담 신청이 완료되었습니다!`);
     e.target.reset();
