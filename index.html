@@ -218,6 +218,21 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .modal-controls button:hover{background:rgba(255,255,255,.2)}
 .modal-controls button:active{transform:scale(.95)}
 
+/* Unit Photo Gallery Slider (84 type) */
+.unit-photo-gallery{display:none;grid-column:1/-1;margin-top:8px}
+.unit-photo-gallery.visible{display:block}
+.unit-photo-gallery .gallery-title{font-size:14px;font-weight:800;color:var(--c-navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.unit-photo-gallery .gallery-title::before{content:'';width:3px;height:16px;background:var(--c-gold);border-radius:2px}
+.photo-slider{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 0 16px;scrollbar-width:none}
+.photo-slider::-webkit-scrollbar{display:none}
+.photo-slide{flex:0 0 75%;scroll-snap-align:start;border-radius:var(--r-lg);overflow:hidden;position:relative;aspect-ratio:1/1;background:#f0ece4}
+.photo-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-slide-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(10,22,40,.6));font-size:11px;font-weight:700;color:#fff;text-align:right}
+.photo-slider-dots{display:flex;justify-content:center;gap:5px;margin-top:4px}
+.photo-slider-dot{width:6px;height:6px;border-radius:50%;background:rgba(10,22,40,.15);transition:all .2s}
+.photo-slider-dot.active{background:var(--c-gold);width:18px;border-radius:3px}
+@media(min-width:768px){.photo-slide{flex:0 0 40%}}
+
 .unit-specs{display:flex;flex-direction:column}
 .unit-type-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;background:linear-gradient(135deg,var(--c-navy),#1a2d50);color:#fff;padding:6px 14px;border-radius:var(--r-pill);margin-bottom:16px;box-shadow:0 4px 12px rgba(10,22,40,.25)}
 .unit-main-area{font-size:40px;font-weight:900;color:var(--c-navy);letter-spacing:-3px;line-height:1;margin-bottom:4px}
@@ -636,6 +651,34 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
         <span class="unit-feat">🏡 발코니 확장</span>
       </div>
     </div>
+    <!-- 84타입 모델하우스 사진 갤러리 -->
+    <div class="unit-photo-gallery" id="unitPhotoGallery">
+      <div class="gallery-title">84㎡ 모델하우스 실사</div>
+      <div class="photo-slider" id="photoSlider">
+        <div class="photo-slide"><img src="img-84/84-01-현관.jpg" alt="현관" loading="lazy"/><div class="photo-slide-label">현관</div></div>
+        <div class="photo-slide"><img src="img-84/84-02-현관.jpg" alt="현관" loading="lazy"/><div class="photo-slide-label">현관</div></div>
+        <div class="photo-slide"><img src="img-84/84-03-작은방1.jpg" alt="작은방1" loading="lazy"/><div class="photo-slide-label">작은방 1</div></div>
+        <div class="photo-slide"><img src="img-84/84-04-작은방1.jpg" alt="작은방1" loading="lazy"/><div class="photo-slide-label">작은방 1</div></div>
+        <div class="photo-slide"><img src="img-84/84-05-게스트화장실.jpg" alt="게스트 화장실" loading="lazy"/><div class="photo-slide-label">게스트 화장실</div></div>
+        <div class="photo-slide"><img src="img-84/84-06-작은방2.jpg" alt="작은방2" loading="lazy"/><div class="photo-slide-label">작은방 2</div></div>
+        <div class="photo-slide"><img src="img-84/84-07-안방.jpg" alt="안방" loading="lazy"/><div class="photo-slide-label">안방</div></div>
+        <div class="photo-slide"><img src="img-84/84-08-안방화장실앞.jpg" alt="안방 화장실 앞" loading="lazy"/><div class="photo-slide-label">안방 화장실 앞</div></div>
+        <div class="photo-slide"><img src="img-84/84-09-안방화장실앞.jpg" alt="안방 화장실 앞" loading="lazy"/><div class="photo-slide-label">안방 화장실 앞</div></div>
+        <div class="photo-slide"><img src="img-84/84-10-안방드레스룸.jpg" alt="안방 드레스룸" loading="lazy"/><div class="photo-slide-label">안방 드레스룸</div></div>
+        <div class="photo-slide"><img src="img-84/84-11-안방화장실.jpg" alt="안방 화장실" loading="lazy"/><div class="photo-slide-label">안방 화장실</div></div>
+        <div class="photo-slide"><img src="img-84/84-12-안방발코니.jpg" alt="안방 발코니" loading="lazy"/><div class="photo-slide-label">안방 발코니</div></div>
+        <div class="photo-slide"><img src="img-84/84-13-거실.jpg" alt="거실" loading="lazy"/><div class="photo-slide-label">거실</div></div>
+        <div class="photo-slide"><img src="img-84/84-14-거실.jpg" alt="거실" loading="lazy"/><div class="photo-slide-label">거실</div></div>
+        <div class="photo-slide"><img src="img-84/84-15-주방.jpg" alt="주방" loading="lazy"/><div class="photo-slide-label">주방</div></div>
+        <div class="photo-slide"><img src="img-84/84-16-주방.jpg" alt="주방" loading="lazy"/><div class="photo-slide-label">주방</div></div>
+        <div class="photo-slide"><img src="img-84/84-17-주방.jpg" alt="주방" loading="lazy"/><div class="photo-slide-label">주방</div></div>
+        <div class="photo-slide"><img src="img-84/84-18-세탁실.jpg" alt="세탁실" loading="lazy"/><div class="photo-slide-label">세탁실</div></div>
+        <div class="photo-slide"><img src="img-84/84-19-주방에서보는거실.jpg" alt="주방에서 보는 거실" loading="lazy"/><div class="photo-slide-label">주방에서 보는 거실</div></div>
+        <div class="photo-slide"><img src="img-84/84-20-월패드.jpg" alt="월패드" loading="lazy"/><div class="photo-slide-label">월패드</div></div>
+        <div class="photo-slide"><img src="img-84/84-21-입구.jpg" alt="입구" loading="lazy"/><div class="photo-slide-label">입구</div></div>
+      </div>
+      <div class="photo-slider-dots" id="photoSliderDots"></div>
+    </div>
   </div>
 </section>
 
@@ -910,6 +953,17 @@ function switchUnit(type, btn) {
   floorImg.alt = type === '84' ? '84㎡형 도면' : `${type}형 도면`;
   // Reset viewer state on tab switch
   if (typeof resetViewer === 'function') resetViewer();
+  // Show/hide 84 photo gallery
+  const gallery = document.getElementById('unitPhotoGallery');
+  if (type === '84') {
+    gallery.classList.add('visible');
+    // Reset scroll
+    const slider = document.getElementById('photoSlider');
+    if (slider) slider.scrollTo({ left: 0 });
+    if (typeof updatePhotoDots === 'function') updatePhotoDots();
+  } else {
+    gallery.classList.remove('visible');
+  }
 }
 
 /* ── Toast ── */
@@ -994,6 +1048,31 @@ document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
     btn.textContent = '📋 무료 상담 신청하기';
   }
 });
+
+/* ── Photo Slider Dots ── */
+(function() {
+  const slider = document.getElementById('photoSlider');
+  const dotsWrap = document.getElementById('photoSliderDots');
+  const slides = slider.querySelectorAll('.photo-slide');
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'photo-slider-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => {
+      slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    });
+    dotsWrap.appendChild(dot);
+  });
+  const dots = dotsWrap.querySelectorAll('.photo-slider-dot');
+  function updatePhotoDots() {
+    const scrollLeft = slider.scrollLeft;
+    const slideWidth = slides[0]?.offsetWidth + 12; // gap
+    const idx = Math.round(scrollLeft / slideWidth);
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+  window.updatePhotoDots = updatePhotoDots;
+  slider.addEventListener('scroll', updatePhotoDots, { passive: true });
+})();
 
 /* ── Floorplan Interactive Viewer ── */
 (function() {
