@@ -609,16 +609,16 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
   </div>
   <div class="reveal" style="margin-top:28px">
     <div class="unit-tabs">
-      <div class="unit-tab active" onclick="switchUnit('59A',this)">59A · 26평</div>
+      <div class="unit-tab active" onclick="switchUnit('84',this)">84㎡ · 36평</div>
+      <div class="unit-tab" onclick="switchUnit('59A',this)">59A · 26평</div>
       <div class="unit-tab" onclick="switchUnit('59B',this)">59B · 26평</div>
-      <div class="unit-tab" onclick="switchUnit('84',this)">84㎡ · 36평</div>
     </div>
   </div>
   <div class="unit-display reveal" id="unitDisplay">
     <!-- 도면 이미지 뷰어 -->
     <div class="glass-card floorplan-viewer-card">
       <div class="floorplan-viewer" id="floorplanViewer">
-        <img id="floorplanImg" src="img-floor-59a.jpg" alt="59A형 도면"/>
+        <img id="floorplanImg" src="img-floor-84.jpg" alt="84㎡형 도면"/>
         <div class="viewer-hint" id="viewerHint">탭하여 확대 · 핀치 줌</div>
       </div>
       <div class="viewer-controls">
@@ -630,16 +630,16 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
     </div>
     <!-- Specs -->
     <div class="unit-specs">
-      <div class="unit-type-badge" id="unitBadge">🏠 59㎡ A형 · 총 144세대</div>
-      <div class="unit-main-area" id="unitArea">59.93<em>㎡</em></div>
-      <div class="unit-count" id="unitCount">공급면적 87.71㎡ (26.53평) · 계약면적 138.28㎡ (41.83평)</div>
+      <div class="unit-type-badge" id="unitBadge">🏡 84㎡형 · 총 144세대</div>
+      <div class="unit-main-area" id="unitArea">84.77<em>㎡</em></div>
+      <div class="unit-count" id="unitCount">공급면적 122.06㎡ (36.92평) · 계약면적 193.59㎡ (58.56평)</div>
       <div class="unit-spec-rows">
-        <div class="spec-row"><div class="spec-key">전용면적</div><div class="spec-val" id="s-private">59.93㎡ (18.13평)</div></div>
-        <div class="spec-row"><div class="spec-key">공급면적</div><div class="spec-val" id="s-supply">87.71㎡ (26.53평)</div></div>
-        <div class="spec-row"><div class="spec-key">계약면적</div><div class="spec-val" id="s-contract">138.28㎡ (41.83평)</div></div>
+        <div class="spec-row"><div class="spec-key">전용면적</div><div class="spec-val" id="s-private">84.77㎡ (25.64평)</div></div>
+        <div class="spec-row"><div class="spec-key">공급면적</div><div class="spec-val" id="s-supply">122.06㎡ (36.92평)</div></div>
+        <div class="spec-row"><div class="spec-key">계약면적</div><div class="spec-val" id="s-contract">193.59㎡ (58.56평)</div></div>
         <div class="spec-row"><div class="spec-key">세대수</div><div class="spec-val" id="s-units">144세대 (전체의 33.33%)</div></div>
-        <div class="spec-row"><div class="spec-key">구조</div><div class="spec-val" id="s-layout">3룸 · 욕실 2개 · 발코니 확장형</div></div>
-        <div class="spec-row"><div class="spec-key">임대가 (예시)</div><div class="spec-val highlight" id="s-rent">221,525,500원</div></div>
+        <div class="spec-row"><div class="spec-key">구조</div><div class="spec-val" id="s-layout">4룸 · 욕실 2개 · 발코니 확장형</div></div>
+        <div class="spec-row"><div class="spec-key">임대가 (예시)</div><div class="spec-val highlight" id="s-rent">280,000,000원 (예상)</div></div>
       </div>
       <div class="unit-features">
         <span class="unit-feat">❄️ 시스템에어컨 4대</span>
@@ -652,9 +652,9 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
       </div>
     </div>
     <!-- 84타입 모델하우스 사진 갤러리 -->
-    <div class="unit-photo-gallery" id="unitPhotoGallery">
+    <div class="unit-photo-gallery visible" id="gallery84" data-gallery-type="84">
       <div class="gallery-title">84㎡ 모델하우스 실사</div>
-      <div class="photo-slider" id="photoSlider">
+      <div class="photo-slider" id="photoSlider84">
         <div class="photo-slide"><img src="img-84/84-01-현관.jpg" alt="현관" loading="lazy"/><div class="photo-slide-label">현관</div></div>
         <div class="photo-slide"><img src="img-84/84-02-현관.jpg" alt="현관" loading="lazy"/><div class="photo-slide-label">현관</div></div>
         <div class="photo-slide"><img src="img-84/84-03-작은방1.jpg" alt="작은방1" loading="lazy"/><div class="photo-slide-label">작은방 1</div></div>
@@ -677,7 +677,34 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
         <div class="photo-slide"><img src="img-84/84-20-월패드.jpg" alt="월패드" loading="lazy"/><div class="photo-slide-label">월패드</div></div>
         <div class="photo-slide"><img src="img-84/84-21-입구.jpg" alt="입구" loading="lazy"/><div class="photo-slide-label">입구</div></div>
       </div>
-      <div class="photo-slider-dots" id="photoSliderDots"></div>
+      <div class="photo-slider-dots" id="photoSliderDots84"></div>
+    </div>
+    <!-- 59B타입 모델하우스 사진 갤러리 -->
+    <div class="unit-photo-gallery" id="gallery59B" data-gallery-type="59B">
+      <div class="gallery-title">59B㎡ 모델하우스 실사</div>
+      <div class="photo-slider" id="photoSlider59B">
+        <div class="photo-slide"><img src="img-59b/59b-01-입구.jpg" alt="입구" loading="lazy"/><div class="photo-slide-label">입구</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-02-현관.jpg" alt="현관" loading="lazy"/><div class="photo-slide-label">현관</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-03-작은방.jpg" alt="작은방" loading="lazy"/><div class="photo-slide-label">작은방</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-04-작은방(우).jpg" alt="작은방 (우)" loading="lazy"/><div class="photo-slide-label">작은방 (우)</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-05-작은방(좌).jpg" alt="작은방 (좌)" loading="lazy"/><div class="photo-slide-label">작은방 (좌)</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-06-게스트화장실.jpg" alt="게스트 화장실" loading="lazy"/><div class="photo-slide-label">게스트 화장실</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-07-거실1.jpg" alt="거실" loading="lazy"/><div class="photo-slide-label">거실</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-08-거실2.jpg" alt="거실" loading="lazy"/><div class="photo-slide-label">거실</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-09-주방1.jpg" alt="주방" loading="lazy"/><div class="photo-slide-label">주방</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-10-주방2.jpg" alt="주방" loading="lazy"/><div class="photo-slide-label">주방</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-11-주방바닥.jpg" alt="주방 바닥" loading="lazy"/><div class="photo-slide-label">주방 바닥</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-12-세탁실.jpg" alt="세탁실" loading="lazy"/><div class="photo-slide-label">세탁실 (주방옆)</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-13-주방에서보는거실.jpg" alt="주방에서 보는 거실" loading="lazy"/><div class="photo-slide-label">주방에서 보는 거실</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-14-월패드.jpg" alt="월패드" loading="lazy"/><div class="photo-slide-label">월패드</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-15-안방1.jpg" alt="안방" loading="lazy"/><div class="photo-slide-label">안방</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-16-안방2.jpg" alt="안방" loading="lazy"/><div class="photo-slide-label">안방</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-17-안방화장실입구.jpg" alt="안방 화장실 입구" loading="lazy"/><div class="photo-slide-label">안방 화장실 입구</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-18-안방화장실.jpg" alt="안방 화장실" loading="lazy"/><div class="photo-slide-label">안방 화장실</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-19-안방3.jpg" alt="안방" loading="lazy"/><div class="photo-slide-label">안방</div></div>
+        <div class="photo-slide"><img src="img-59b/59b-20-안방발코니.jpg" alt="안방 발코니" loading="lazy"/><div class="photo-slide-label">안방 발코니</div></div>
+      </div>
+      <div class="photo-slider-dots" id="photoSliderDots59B"></div>
     </div>
   </div>
 </section>
@@ -953,17 +980,18 @@ function switchUnit(type, btn) {
   floorImg.alt = type === '84' ? '84㎡형 도면' : `${type}형 도면`;
   // Reset viewer state on tab switch
   if (typeof resetViewer === 'function') resetViewer();
-  // Show/hide 84 photo gallery
-  const gallery = document.getElementById('unitPhotoGallery');
-  if (type === '84') {
-    gallery.classList.add('visible');
-    // Reset scroll
-    const slider = document.getElementById('photoSlider');
-    if (slider) slider.scrollTo({ left: 0 });
-    if (typeof updatePhotoDots === 'function') updatePhotoDots();
-  } else {
-    gallery.classList.remove('visible');
-  }
+  // Show/hide photo galleries
+  document.querySelectorAll('.unit-photo-gallery').forEach(g => {
+    const gType = g.dataset.galleryType;
+    if (gType === type) {
+      g.classList.add('visible');
+      const slider = g.querySelector('.photo-slider');
+      if (slider) slider.scrollTo({ left: 0 });
+    } else {
+      g.classList.remove('visible');
+    }
+  });
+  if (typeof initGalleryDots === 'function') initGalleryDots(type);
 }
 
 /* ── Toast ── */
@@ -1049,29 +1077,43 @@ document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
   }
 });
 
-/* ── Photo Slider Dots ── */
+/* ── Photo Slider Dots (multi-gallery) ── */
 (function() {
-  const slider = document.getElementById('photoSlider');
-  const dotsWrap = document.getElementById('photoSliderDots');
-  const slides = slider.querySelectorAll('.photo-slide');
-  // Create dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'photo-slider-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => {
-      slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  const galleryConfigs = [
+    { slider: 'photoSlider84', dots: 'photoSliderDots84' },
+    { slider: 'photoSlider59B', dots: 'photoSliderDots59B' }
+  ];
+  galleryConfigs.forEach(cfg => {
+    const slider = document.getElementById(cfg.slider);
+    const dotsWrap = document.getElementById(cfg.dots);
+    if (!slider || !dotsWrap) return;
+    const slides = slider.querySelectorAll('.photo-slide');
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'photo-slider-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => {
+        slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      });
+      dotsWrap.appendChild(dot);
     });
-    dotsWrap.appendChild(dot);
+    const dots = dotsWrap.querySelectorAll('.photo-slider-dot');
+    function updateDots() {
+      const scrollLeft = slider.scrollLeft;
+      const slideWidth = slides[0]?.offsetWidth + 12;
+      const idx = Math.round(scrollLeft / slideWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+    slider.addEventListener('scroll', updateDots, { passive: true });
   });
-  const dots = dotsWrap.querySelectorAll('.photo-slider-dot');
-  function updatePhotoDots() {
-    const scrollLeft = slider.scrollLeft;
-    const slideWidth = slides[0]?.offsetWidth + 12; // gap
-    const idx = Math.round(scrollLeft / slideWidth);
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-  }
-  window.updatePhotoDots = updatePhotoDots;
-  slider.addEventListener('scroll', updatePhotoDots, { passive: true });
+  window.initGalleryDots = function(type) {
+    const gallery = document.querySelector(`.unit-photo-gallery[data-gallery-type="${type}"]`);
+    if (!gallery) return;
+    const dotsWrap = gallery.querySelector('.photo-slider-dots');
+    if (dotsWrap) {
+      const dots = dotsWrap.querySelectorAll('.photo-slider-dot');
+      dots.forEach((d, i) => d.classList.toggle('active', i === 0));
+    }
+  };
 })();
 
 /* ── Floorplan Interactive Viewer ── */
