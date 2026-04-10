@@ -193,14 +193,30 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .unit-tab.active{background:linear-gradient(135deg,var(--c-navy),#1a2d50);color:#fff;box-shadow:0 4px 16px rgba(10,22,40,.25)}
 
 .unit-display{display:grid;grid-template-columns:1fr;gap:24px}
-.unit-3d-wrap{perspective:800px;display:flex;align-items:center;justify-content:center;min-height:320px}
-.unit-3d{transform:rotateX(25deg) rotateZ(-10deg);transform-style:preserve-3d;transition:transform .5s var(--ease-spring);position:relative;width:280px;height:260px}
-.unit-3d:hover{transform:rotateX(20deg) rotateZ(-5deg)}
-.floor-base{position:absolute;bottom:0;left:0;right:0;height:100%;background:rgba(10,22,40,.05);border:2px solid rgba(10,22,40,.2);border-radius:8px;transform:translateZ(0px)}
-.floor-wall{position:absolute;background:rgba(200,164,92,.1);border:1.5px solid rgba(200,164,92,.3);border-radius:4px;transform-style:preserve-3d;transition:all .3s}
-.floor-wall::after{content:attr(data-label);position:absolute;bottom:4px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:var(--c-gold);white-space:nowrap}
-.floor-wall-3d{transform:translateZ(40px);box-shadow:0 -40px 0 rgba(200,164,92,.04)}
-.floor-ceiling{position:absolute;top:0;left:0;right:0;height:100%;background:rgba(255,255,255,.3);border:2px solid rgba(10,22,40,.1);border-radius:8px;transform:translateZ(40px)}
+/* Floorplan Viewer */
+.floorplan-viewer-card{border-radius:var(--r-xl);padding:16px;overflow:hidden;position:relative}
+.floorplan-viewer{position:relative;overflow:hidden;border-radius:var(--r-lg);background:#fff;touch-action:none;cursor:zoom-in;aspect-ratio:4/3}
+.floorplan-viewer img{width:100%;height:100%;object-fit:contain;transform-origin:center center;transition:none;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.viewer-hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:rgba(10,22,40,.45);background:rgba(255,255,255,.85);backdrop-filter:blur(8px);padding:4px 12px;border-radius:var(--r-pill);white-space:nowrap;pointer-events:none;transition:opacity .3s;z-index:2}
+.viewer-hint.hidden{opacity:0}
+.viewer-controls{display:flex;gap:6px;justify-content:flex-end;margin-top:10px}
+.viewer-btn{width:36px;height:36px;border-radius:10px;background:rgba(10,22,40,.06);border:1.5px solid rgba(10,22,40,.1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--c-navy);transition:all .2s;cursor:pointer}
+.viewer-btn:hover{background:rgba(10,22,40,.12)}
+.viewer-btn:active{transform:scale(.92)}
+
+/* Floorplan Fullscreen Modal */
+.floorplan-modal{position:fixed;inset:0;z-index:2000;background:rgba(10,22,40,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s var(--ease-smooth)}
+.floorplan-modal.open{opacity:1;pointer-events:all}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;flex-shrink:0}
+.modal-header span{font-size:14px;font-weight:800;color:#fff}
+.modal-header button{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;color:rgba(255,255,255,.8);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;cursor:pointer;transition:all .2s}
+.modal-header button:hover{background:rgba(255,255,255,.2)}
+.modal-body{flex:1;overflow:hidden;touch-action:none;display:flex;align-items:center;justify-content:center;position:relative}
+.modal-body img{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center center;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.modal-controls{display:flex;gap:8px;justify-content:center;padding:14px 20px;flex-shrink:0}
+.modal-controls button{padding:8px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:700;color:rgba(255,255,255,.9);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);cursor:pointer;font-family:var(--font);transition:all .2s}
+.modal-controls button:hover{background:rgba(255,255,255,.2)}
+.modal-controls button:active{transform:scale(.95)}
 
 .unit-specs{display:flex;flex-direction:column}
 .unit-type-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;background:linear-gradient(135deg,var(--c-navy),#1a2d50);color:#fff;padding:6px 14px;border-radius:var(--r-pill);margin-bottom:16px;box-shadow:0 4px 12px rgba(10,22,40,.25)}
@@ -584,25 +600,17 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
     </div>
   </div>
   <div class="unit-display reveal" id="unitDisplay">
-    <!-- 3D Floor Plan -->
-    <div class="glass-card" style="border-radius:var(--r-xl);padding:20px;overflow:hidden">
-      <div class="unit-3d-wrap">
-        <div class="unit-3d" id="floorplan3D">
-          <!-- 59A default -->
-          <div class="floor-base"></div>
-          <div class="floor-wall floor-wall-3d" style="left:5%;top:5%;width:50%;height:42%" data-label="거실"></div>
-          <div class="floor-wall floor-wall-3d" style="left:57%;top:5%;width:38%;height:30%" data-label="주방/식당"></div>
-          <div class="floor-wall floor-wall-3d" style="left:5%;top:50%;width:40%;height:45%" data-label="안방"></div>
-          <div class="floor-wall floor-wall-3d" style="left:48%;top:50%;width:25%;height:22%" data-label="침실2"></div>
-          <div class="floor-wall floor-wall-3d" style="left:48%;top:75%;width:25%;height:20%" data-label="침실3"></div>
-          <div class="floor-wall floor-wall-3d" style="left:75%;top:38%;width:20%;height:20%" data-label="욕실1"></div>
-          <div class="floor-wall floor-wall-3d" style="left:75%;top:60%;width:20%;height:18%" data-label="욕실2"></div>
-          <div class="floor-wall floor-wall-3d" style="left:57%;top:38%;width:16%;height:10%" data-label="현관"></div>
-        </div>
+    <!-- 도면 이미지 뷰어 -->
+    <div class="glass-card floorplan-viewer-card">
+      <div class="floorplan-viewer" id="floorplanViewer">
+        <img id="floorplanImg" src="img-floor-59a.jpg" alt="59A형 도면"/>
+        <div class="viewer-hint" id="viewerHint">탭하여 확대 · 핀치 줌</div>
       </div>
-      <!-- 도면 이미지 -->
-      <div class="img-placeholder" style="aspect-ratio:4/3;margin-top:16px;background:#fff">
-        <img id="floorplanImg" src="img-floor-59a.jpg" alt="59A형 도면" style="width:100%;height:100%;object-fit:contain"/>
+      <div class="viewer-controls">
+        <button class="viewer-btn" id="btnRotate" title="90° 회전">↻</button>
+        <button class="viewer-btn" id="btnZoomIn" title="확대">+</button>
+        <button class="viewer-btn" id="btnZoomOut" title="축소">−</button>
+        <button class="viewer-btn" id="btnReset" title="초기화">⟲</button>
       </div>
     </div>
     <!-- Specs -->
@@ -802,6 +810,21 @@ footer .disclaimer{font-size:10px;color:rgba(255,255,255,.3);line-height:1.8;mar
   <a href="#inquiry" class="bottom-cta-inquiry">📋 문의하기</a>
 </div>
 
+<!-- ═══ FLOORPLAN MODAL ═══ -->
+<div class="floorplan-modal" id="floorplanModal">
+  <div class="modal-header">
+    <span id="modalTitle">59A형 도면</span>
+    <button id="modalClose" aria-label="닫기">✕</button>
+  </div>
+  <div class="modal-body" id="modalBody">
+    <img id="modalImg" src="" alt=""/>
+  </div>
+  <div class="modal-controls">
+    <button id="modalRotate">↻ 회전</button>
+    <button id="modalReset">⟲ 초기화</button>
+  </div>
+</div>
+
 <!-- ═══ TOAST ═══ -->
 <div class="toast" id="toast"></div>
 
@@ -850,40 +873,21 @@ const unitData = {
     count: '공급면적 87.71㎡ (26.53평) · 계약면적 138.28㎡ (41.83평)',
     private: '59.93㎡ (18.13평)', supply: '87.71㎡ (26.53평)',
     contract: '138.28㎡ (41.83평)', units: '144세대 (전체의 33.33%)',
-    layout: '3룸 · 욕실 2개 · 발코니 확장형', rent: '221,525,500원',
-    rooms: [
-      {l:5,t:5,w:50,h:42,label:'거실'},{l:57,t:5,w:38,h:30,label:'주방/식당'},
-      {l:5,t:50,w:40,h:45,label:'안방'},{l:48,t:50,w:25,h:22,label:'침실2'},
-      {l:48,t:75,w:25,h:20,label:'침실3'},{l:75,t:38,w:20,h:20,label:'욕실1'},
-      {l:75,t:60,w:20,h:18,label:'욕실2'},{l:57,t:38,w:16,h:10,label:'현관'}
-    ]
+    layout: '3룸 · 욕실 2개 · 발코니 확장형', rent: '221,525,500원'
   },
   '59B': {
     badge: '🏠 59㎡ B형 · 총 144세대', area: '59.74', unit: '㎡',
     count: '공급면적 86.04㎡ (26.03평) · 계약면적 136.44㎡ (41.27평)',
     private: '59.74㎡ (18.07평)', supply: '86.04㎡ (26.03평)',
     contract: '136.44㎡ (41.27평)', units: '144세대 (전체의 33.33%)',
-    layout: '3룸 · 욕실 2개 · 발코니 확장형', rent: '219,800,000원 (예상)',
-    rooms: [
-      {l:5,t:5,w:45,h:45,label:'거실'},{l:52,t:5,w:43,h:28,label:'주방/식당'},
-      {l:5,t:53,w:42,h:42,label:'안방'},{l:50,t:36,w:22,h:28,label:'침실2'},
-      {l:50,t:67,w:22,h:28,label:'침실3'},{l:75,t:36,w:20,h:22,label:'욕실1'},
-      {l:75,t:60,w:20,h:18,label:'욕실2'},{l:52,t:36,w:16,h:10,label:'현관'}
-    ]
+    layout: '3룸 · 욕실 2개 · 발코니 확장형', rent: '219,800,000원 (예상)'
   },
   '84': {
     badge: '🏡 84㎡형 · 총 144세대', area: '84.77', unit: '㎡',
     count: '공급면적 122.06㎡ (36.92평) · 계약면적 193.59㎡ (58.56평)',
     private: '84.77㎡ (25.64평)', supply: '122.06㎡ (36.92평)',
     contract: '193.59㎡ (58.56평)', units: '144세대 (전체의 33.33%)',
-    layout: '4룸 · 욕실 2개 · 발코니 확장형', rent: '280,000,000원 (예상)',
-    rooms: [
-      {l:5,t:5,w:50,h:38,label:'거실'},{l:57,t:5,w:38,h:25,label:'주방/식당'},
-      {l:5,t:46,w:35,h:50,label:'안방'},{l:42,t:46,w:25,h:25,label:'침실2'},
-      {l:42,t:73,w:25,h:23,label:'침실3'},{l:70,t:33,w:25,h:23,label:'침실4'},
-      {l:70,t:58,w:25,h:18,label:'욕실1'},{l:70,t:78,w:25,h:18,label:'욕실2'},
-      {l:57,t:33,w:11,h:10,label:'현관'}
-    ]
+    layout: '4룸 · 욕실 2개 · 발코니 확장형', rent: '280,000,000원 (예상)'
   }
 };
 
@@ -904,16 +908,8 @@ function switchUnit(type, btn) {
   const floorImg = document.getElementById('floorplanImg');
   floorImg.src = floorImgMap[type];
   floorImg.alt = type === '84' ? '84㎡형 도면' : `${type}형 도면`;
-  // Update 3D floorplan
-  const fp = document.getElementById('floorplan3D');
-  fp.querySelectorAll('.floor-wall').forEach(w => w.remove());
-  d.rooms.forEach(r => {
-    const div = document.createElement('div');
-    div.className = 'floor-wall floor-wall-3d';
-    div.style.cssText = `left:${r.l}%;top:${r.t}%;width:${r.w}%;height:${r.h}%`;
-    div.setAttribute('data-label', r.label);
-    fp.appendChild(div);
-  });
+  // Reset viewer state on tab switch
+  if (typeof resetViewer === 'function') resetViewer();
 }
 
 /* ── Toast ── */
@@ -998,6 +994,208 @@ document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
     btn.textContent = '📋 무료 상담 신청하기';
   }
 });
+
+/* ── Floorplan Interactive Viewer ── */
+(function() {
+  const viewer = document.getElementById('floorplanViewer');
+  const img = document.getElementById('floorplanImg');
+  const hint = document.getElementById('viewerHint');
+  const modal = document.getElementById('floorplanModal');
+  const modalBody = document.getElementById('modalBody');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+
+  // Inline viewer state
+  let vScale = 1, vRotation = 0;
+
+  function applyInlineTransform() {
+    img.style.transform = `scale(${vScale}) rotate(${vRotation}deg)`;
+  }
+  function resetViewer() {
+    vScale = 1; vRotation = 0;
+    applyInlineTransform();
+    if (hint) hint.classList.remove('hidden');
+  }
+  window.resetViewer = resetViewer;
+
+  // Inline controls
+  document.getElementById('btnZoomIn').addEventListener('click', () => {
+    vScale = Math.min(vScale * 1.3, 4);
+    applyInlineTransform();
+    hint.classList.add('hidden');
+  });
+  document.getElementById('btnZoomOut').addEventListener('click', () => {
+    vScale = Math.max(vScale / 1.3, 1);
+    applyInlineTransform();
+  });
+  document.getElementById('btnRotate').addEventListener('click', () => {
+    vRotation = (vRotation + 90) % 360;
+    applyInlineTransform();
+    hint.classList.add('hidden');
+  });
+  document.getElementById('btnReset').addEventListener('click', resetViewer);
+
+  // Mouse wheel zoom on viewer
+  viewer.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+    vScale = Math.max(1, Math.min(vScale * delta, 4));
+    applyInlineTransform();
+    hint.classList.add('hidden');
+  }, { passive: false });
+
+  // ── Fullscreen Modal ──
+  let mScale = 1, mRotation = 0, mTransX = 0, mTransY = 0;
+  let isPanning = false, startX = 0, startY = 0;
+  let pinchStartDist = 0, pinchStartScale = 1;
+
+  function applyModalTransform() {
+    modalImg.style.transform = `translate(${mTransX}px, ${mTransY}px) scale(${mScale}) rotate(${mRotation}deg)`;
+  }
+  function resetModal() {
+    mScale = 1; mRotation = 0; mTransX = 0; mTransY = 0;
+    applyModalTransform();
+  }
+  function openModal() {
+    const src = document.getElementById('floorplanImg').src;
+    const alt = document.getElementById('floorplanImg').alt;
+    modalImg.src = src;
+    modalImg.alt = alt;
+    modalTitle.textContent = alt;
+    resetModal();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Open modal on viewer tap/click
+  viewer.addEventListener('click', (e) => {
+    if (e.target.closest('.viewer-controls')) return;
+    openModal();
+  });
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  // Close on background click (not on image)
+  modalBody.addEventListener('click', (e) => {
+    if (e.target === modalBody) closeModal();
+  });
+  // ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Modal controls
+  document.getElementById('modalRotate').addEventListener('click', () => {
+    mRotation = (mRotation + 90) % 360;
+    applyModalTransform();
+  });
+  document.getElementById('modalReset').addEventListener('click', resetModal);
+
+  // Modal wheel zoom
+  modalBody.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+    mScale = Math.max(0.5, Math.min(mScale * delta, 8));
+    applyModalTransform();
+  }, { passive: false });
+
+  // Modal pointer (mouse drag pan)
+  modalBody.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && mScale > 1) {
+      isPanning = true;
+      startX = e.clientX - mTransX;
+      startY = e.clientY - mTransY;
+      modalBody.style.cursor = 'grabbing';
+      modalBody.setPointerCapture(e.pointerId);
+    }
+  });
+  modalBody.addEventListener('pointermove', (e) => {
+    if (isPanning) {
+      mTransX = e.clientX - startX;
+      mTransY = e.clientY - startY;
+      applyModalTransform();
+    }
+  });
+  modalBody.addEventListener('pointerup', () => {
+    isPanning = false;
+    modalBody.style.cursor = '';
+  });
+
+  // Modal touch: pinch zoom + drag pan
+  let activeTouches = [];
+
+  function getTouchDist(t) {
+    const dx = t[0].clientX - t[1].clientX;
+    const dy = t[0].clientY - t[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  modalBody.addEventListener('touchstart', (e) => {
+    activeTouches = [...e.touches];
+    if (activeTouches.length === 1 && mScale > 1) {
+      isPanning = true;
+      startX = activeTouches[0].clientX - mTransX;
+      startY = activeTouches[0].clientY - mTransY;
+    } else if (activeTouches.length === 2) {
+      isPanning = false;
+      pinchStartDist = getTouchDist(activeTouches);
+      pinchStartScale = mScale;
+    }
+  }, { passive: true });
+
+  modalBody.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    activeTouches = [...e.touches];
+    if (activeTouches.length === 2) {
+      const dist = getTouchDist(activeTouches);
+      mScale = Math.max(0.5, Math.min(pinchStartScale * (dist / pinchStartDist), 8));
+      applyModalTransform();
+    } else if (activeTouches.length === 1 && isPanning) {
+      mTransX = activeTouches[0].clientX - startX;
+      mTransY = activeTouches[0].clientY - startY;
+      applyModalTransform();
+    }
+  }, { passive: false });
+
+  modalBody.addEventListener('touchend', (e) => {
+    if (e.touches.length === 0) {
+      isPanning = false;
+      activeTouches = [];
+    } else {
+      activeTouches = [...e.touches];
+      if (activeTouches.length === 1 && mScale > 1) {
+        isPanning = true;
+        startX = activeTouches[0].clientX - mTransX;
+        startY = activeTouches[0].clientY - mTransY;
+      }
+    }
+  }, { passive: true });
+
+  // Double-tap to toggle zoom in modal
+  let lastTap = 0;
+  modalBody.addEventListener('touchend', (e) => {
+    if (e.touches.length > 0) return;
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      if (mScale > 1.5) { resetModal(); } else {
+        mScale = 3; mTransX = 0; mTransY = 0;
+        applyModalTransform();
+      }
+    }
+    lastTap = now;
+  }, { passive: true });
+
+  // Double-click on desktop
+  modalBody.addEventListener('dblclick', () => {
+    if (mScale > 1.5) { resetModal(); } else {
+      mScale = 3; mTransX = 0; mTransY = 0;
+      applyModalTransform();
+    }
+  });
+})();
 
 /* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
